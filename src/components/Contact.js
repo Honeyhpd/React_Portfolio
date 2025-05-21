@@ -1,27 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Message submitted successfully!");
-    // Clear the form
-    setFormData({ name: "", email: "", message: "" });
-  };
-
   return (
     <section id="contact" className="container">
       <h2>Contact Me</h2>
@@ -39,8 +18,6 @@ function Contact() {
         <a href="https://www.linkedin.com/in/honey-priya-dharshini-v-590372268" target="_blank" rel="noopener noreferrer">LinkedIn</a> |{" "}
         <a href="https://www.instagram.com/honey.hpd" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
-
-      
     </section>
   );
 }
