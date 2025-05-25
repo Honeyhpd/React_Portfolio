@@ -1,11 +1,12 @@
-import React from "react";
+import React from 'react';
+import './Footer.css';
 
-function Footer() {
+const Footer = () => {
   return (
-    <footer>
-      <p>© 2025 Honey Priya Dharshini V | All Rights Reserved</p>
+    <footer className="footer text-center py-3">
+      <p>© {new Date().getFullYear()} Honey Priya Dharshini V. All rights reserved.</p>
     </footer>
   );
-}
+};
 
 export default Footer;

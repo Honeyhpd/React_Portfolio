@@ -1,27 +1,22 @@
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: white; /* or your preferred color */
-  z-index: 1000;
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(to right, #141e30, #243b55);
+  color: white;
 }
 
-header h1,
-header p,
-header nav {
-  margin: 0.5rem 0;
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-nav a {
-  margin-right: 1rem;
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-}
-
-nav a:hover {
-  color: #007bff;
+.profile-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }

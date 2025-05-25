@@ -1,112 +1,136 @@
 import React, { useState } from "react";
+import "./section.css";
+import "./Projects.css";
+import { FaCode, FaShieldAlt, FaPaintBrush, FaGithub } from "react-icons/fa";
 
-function Projects() {
-  const [openIndex, setOpenIndex] = useState(null);
+const projectsData = [
+  {
+    icon: <FaShieldAlt size={30} color="#198754" />,
+    title: "SSL/TLS Certificate Analyzer",
+    description: "Tool for analyzing SSL/TLS certificates and web security.",
+    tech: ["Python", "HTML", "CSS", "JavaScript"],
+    link: "https://github.com/Honeyhpd/SSL-TLS",
+    category: "Cybersecurity",
+    image: "/images/ssl-analyzer.png",
+  },
+  {
+    icon: <FaShieldAlt size={30} color="#198754" />,
+    title: "Phishing Website Detector",
+    description: "Detects phishing URLs using ML integrated with Flask.",
+    tech: ["Python", "Flask", "Machine Learning"],
+    link: "https://github.com/Honeyhpd/Phishing-Detector",
+    category: "Cybersecurity",
+    image: "/images/phishing-detector.jpg",
+  },
+  {
+    icon: <FaPaintBrush size={30} color="#6f42c1" />,
+    title: "Health-care App UI",
+    description: "Modern UI design with wireframes and mockups.",
+    tech: ["Figma", "Canva"],
+    link: "https://github.com/Honeyhpd/Health-Care",
+    category: "UI/UX",
+    image: "/images/health-ui.jpeg",
+  },
+  {
+    icon: <FaPaintBrush size={30} color="#6f42c1" />,
+    title: "To-Do App Redesign",
+    description: "Redesign of a productivity app focused on UX flow.",
+    tech: ["Figma", "Notion"],
+    link: "https://github.com/Honeyhpd/JS_Projects",
+    category: "UI/UX",
+    image: "/images/todo.jpg",
+  },
+  {
+    icon: <FaCode size={30} color="#fd7e14" />,
+    title: "Portfolio Website",
+    description: "Responsive personal website with resume and projects.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    link: "https://github.com/Honeyhpd/Portfolio",
+    category: "Software Development",
+    image: "/images/portfolio.png",
+  },
+  {
+    icon: <FaCode size={30} color="#fd7e14" />,
+    title: "Timetable Scheduler",
+    description: "AI-based scheduler using Genetic Algorithm & Constraint Satisfaction.",
+    tech: ["HTML", "CSS", "JavaScript", "Python"],
+    link: "https://github.com/Honeyhpd/Timetable-Scheduler",
+    category: "Software Development",
+    image: "/images/timetable.png",
+  },
+];
 
-  const toggleDetails = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
+const Projects = () => {
+  const [flipped, setFlipped] = useState(null);
+
+  const toggleFlip = (index) => {
+    setFlipped(index === flipped ? null : index);
   };
 
-  const projects = [
-    {
-      category: "Cybersecurity Projects",
-      items: [
-        {
-          title: "SSL/TLS Certificate Analyzer",
-          description:
-            "A digital tool for analysis of SSL/TLS certificates and web security across websites.",
-          tech: "Python, HTML, CSS, JavaScript",
-          link: "https://github.com/Honeyhpd/SSL-TLS",
-        },
-        {
-          title: "Phishing Website Detector",
-          description:
-            "Tool to detect phishing URLs using ML model integrated with Flask.",
-          tech: "Python, Flask, Machine Learning",
-          link: "https://github.com/your-phishing-detector",
-        },
-      ],
-    },
-    {
-      category: "UI/UX Projects",
-      items: [
-        {
-          title: "Health-care App UI Design",
-          description:
-            "Modern interface for a Health-care app including wireframes, mockups, and user flows.",
-          tech: "Figma, Canva",
-          link: "https://github.com/Honeyhpd/Health-Care",
-        },
-        {
-          title: "To-Do App Redesign",
-          description:
-            "Minimalistic redesign of a productivity app focused on UX flow.",
-          tech: "Figma, Notion",
-          link: "https://github.com/your-todo-redesign",
-        },
-      ],
-    },
-    {
-      category: "Software Development Projects",
-      items: [
-        {
-          title: "Portfolio Website",
-          description:
-            "Responsive personal portfolio website with resume and project sections.",
-          tech: "HTML, CSS, JavaScript",
-          link: "https://github.com/Honeyhpd/Portfolio",
-        },
-        {
-          title: "Timetable Scheduler",
-          description:
-            "An AI based Timetable scheduler using Genetic Algorithm And CSP for Institutions.",
-          tech: "HTML, CSS, JavaScript, Python",
-          link: "https://github.com/Honeyhpd/Timetable-Scheduler",
-        },
-      ],
-    },
-  ];
-
   return (
-    <section id="projects" className="container">
-      <h2>My Projects</h2>
-      {projects.map((group, groupIdx) => (
-        <div key={group.category} className="project-group">
-          <h3>{group.category}</h3>
-          <div className="project-grid">
-            {group.items.map((proj, idx) => {
-              const currentIndex = `${groupIdx}-${idx}`;
-              const isOpen = openIndex === currentIndex;
-              return (
-                <div key={proj.title} className="project-card">
-                  <h4>{proj.title}</h4>
-                  <button onClick={() => toggleDetails(currentIndex)}>
-                    {isOpen ? "Hide Details" : "More Details"}
-                  </button>
-                  {isOpen && (
-                    <div className="project-details">
+    <section id="projects" className="section-container">
+      <div className="container">
+        <h2 className="section-title text-center mb-5">My Projects</h2>
+        <div className="row justify-content-center">
+          {projectsData.map((proj, index) => (
+            <div key={index} className="col-md-6 col-lg-4 mb-4">
+              <div className={`flip-card ${flipped === index ? "flipped" : ""}`}>
+                <div className="flip-card-inner">
+                  {/* Front */}
+                  <div className="flip-card-front">
+                    <img src={proj.image} alt={proj.title} className="project-img-top" />
+                    <div className="p-3">
+                      <div className="d-flex align-items-center mb-2">
+                        {proj.icon}
+                        <h5 className="ms-2 mb-0">{proj.title}</h5>
+                      </div>
+                      <p className="text-muted">{proj.category}</p>
+                      <button
+                        className="btn btn-outline-primary btn-sm mt-2"
+                        onClick={() => toggleFlip(index)}
+                      >
+                        Detail
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Back */}
+                  <div className="flip-card-back">
+                    <div className="p-3">
+                      <h5>{proj.title}</h5>
                       <p>{proj.description}</p>
-                      <p>
-                        <strong>Tech Used:</strong> {proj.tech}
-                      </p>
+                      <div className="mb-2">
+                        {proj.tech.map((tech, i) => (
+                          <span key={i} className="badge bg-light text-dark me-2 mb-1">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                       <a
                         href={proj.link}
                         target="_blank"
-                        className="btn"
                         rel="noopener noreferrer"
+                        className="btn btn-sm btn-dark mt-2"
                       >
-                        GitHub
+                        <FaGithub className="me-1" />
+                        View on GitHub
                       </a>
+                      <button
+                        className="btn btn-outline-light btn-sm mt-2 d-block"
+                        onClick={() => toggleFlip(index)}
+                      >
+                        Back
+                      </button>
                     </div>
-                  )}
+                  </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </section>
   );
-}
+};
 
 export default Projects;

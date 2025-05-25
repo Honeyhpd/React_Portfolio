@@ -4,6 +4,16 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
+html {
+  scroll-behavior: smooth;
+}
+.about-quote {
+  text-align: center;
+  font-style: italic;
+  margin: 2rem 0;
+  font-size: 1.2rem;
+  color: #555;
+}
 
 
 body {
